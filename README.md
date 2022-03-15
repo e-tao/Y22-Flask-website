@@ -9,7 +9,7 @@ Hi teams, for the project to run you need these packages installed.
  </ul>
 
 the package managment in Python is pip, so run 
-<em>pip install + packagename</em>
+<em>pip install "packagename goes here"</em>
 
 please consider create your yourname-dev-branch, and push it to the remote, so we can keep the main safe from broken code.
 we will merge the working function later.
