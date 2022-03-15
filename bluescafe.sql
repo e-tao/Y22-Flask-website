@@ -25,16 +25,25 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `item` varchar(64) NOT NULL,
   `day` date NOT NULL,
   PRIMARY KEY (`menuId`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table bluescafe.menu: ~5 rows (approximately)
+-- Dumping data for table bluescafe.menu: ~14 rows (approximately)
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
 INSERT INTO `menu` (`menuId`, `item`, `day`) VALUES
 	(1, 'Quiche au légumes', '2022-03-14'),
 	(2, 'Brochettes de crevettes et garniture', '2022-03-15'),
 	(3, 'Tacos de boeuf', '2022-03-16'),
 	(4, 'Risotto d\'orge et pétoncles', '2022-03-17'),
-	(5, 'Choix du chef', '2022-03-18');
+	(12, 'a', '2022-03-21'),
+	(13, 'b', '2022-03-22'),
+	(14, 'c', '2022-03-23'),
+	(15, 'd', '2022-03-24'),
+	(16, 'e', '2022-03-25'),
+	(17, 'x', '2022-03-28'),
+	(18, 'xx', '2022-03-31'),
+	(19, 'xxx', '2022-04-05'),
+	(20, 'xxxx', '2022-02-28'),
+	(21, 'xxxx', '2022-02-23');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
 -- Dumping structure for table bluescafe.page
