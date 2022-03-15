@@ -9,7 +9,7 @@ please consider create your yourname-dev-branch, and push it to the remote, so w
 we will merge the working function later.
 
 you can create your dev-branch after pull the main by using
-git switch -c <yourname-dev-branch> OR
-git checkout -b <yourname-dev-branch>
+git switch -c yourname-dev-branch OR
+git checkout -b yourname-dev-branch
 
 and push the branch to the remote.
