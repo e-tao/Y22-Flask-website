@@ -1,12 +1,7 @@
 # Y22-GroupProject
 
-Hi teams, for the project to run you need these packages installed.
-<ul>
-  <li>flask</li>
-  <li>SQLAlchemy</li>
-  <li>PyMySQL</li>
-  <li>mysql-connector</li>
- </ul>
+Hi teams, there is a requirements.txt file included in the project, which tracks all the package dependencies.
+In the vscode terminal run <em>pip install -r requirements.txt</em> to have all dependencies installed.
 
 the package managment in Python is pip, so run 
 <em>pip install "package name goes here"</em>
