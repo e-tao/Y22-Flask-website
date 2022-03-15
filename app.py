@@ -1,3 +1,4 @@
+from wsgiref.util import request_uri
 from flask import Flask, render_template, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.automap import automap_base
@@ -26,11 +27,12 @@ def index():
     # db.session.add(new_page)
     # db.session.commit()
     foodMenu = db.session.query(FoodMenu).order_by(
-        FoodMenu.day.desc()).limit(7)
+        FoodMenu.day.desc()).limit(6)
     foodMenu = foodMenu[::-1]
-    menus = db.session.query(Page.name).order_by(Page.order.asc())
-    pages = db.session.query(Page.content).order_by(Page.order.asc())
-    return render_template('index.html', pages=pages, menus=menus, foodMenu=foodMenu)
+    # menus = db.session.query(Page.name).order_by(Page.order.asc())
+    # pages = db.session.query(Page.content).order_by(Page.order.asc())
+    pages = db.session.query(Page).order_by(Page.order.asc())
+    return render_template('index.html', pages=pages, foodMenu=foodMenu)
 
 
 @ app.route('/addmenuitem', methods=["GET", "POST"])
@@ -40,8 +42,12 @@ def addMenuItem():
         dates = request.form.getlist('date')
 
         for i in range(len(items)):
-            new_item = FoodMenu(item=items[i], day=dates[i])
-            db.session.add(new_item)
+            if(items[i] != "" and dates[i] != ""):
+                new_item = FoodMenu(item=items[i], day=dates[i])
+                db.session.add(new_item)
+            else:
+                return render_template('error.html', message="input error", back=request.referrer)
+
         db.session.commit()
         return ""
     else:

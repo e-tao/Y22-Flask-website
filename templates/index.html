@@ -1,12 +1,10 @@
 {%extends "layout.html" %}
 
-
 {% block content %}
-
 <nav>
     <ul>
-        {% for menu in menus %}
-        <li><a href = "#{{menu.name}}">{{menu.name}}</a></li>
+        {% for page in pages %}
+        <li><a href = "#{{page.name}}">{{page.name}}</a></li>
         {% endfor %}
         <li>LOGIN</li>
     </ul>
@@ -24,9 +22,7 @@
 
 
 {% for page in pages %}
-<div>{{page.content|safe}}</div>
+<div id="{{page.name}}">{{page.content|safe}}</div>
 {% endfor %}
-
-
 
 {% endblock content%}

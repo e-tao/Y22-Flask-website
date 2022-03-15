@@ -1,0 +1,14 @@
+form {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+form>div{
+    margin: 10px 30px;
+}
+
+form>div>input{
+    margin-left: 30px;
+    height: 25px;
+}
