@@ -6,8 +6,8 @@ from sqlalchemy.ext.automap import automap_base
 app = Flask(__name__)
 
 # replace the user name and password in the statement below
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/bluescafe'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ethan:w8Q1Ji8I23s2r4YIsocemabAb5nEQo@192.168.1.15/bluescafe'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/bluescafe'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ethan:w8Q1Ji8I23s2r4YIsocemabAb5nEQo@192.168.1.15/bluescafe'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
