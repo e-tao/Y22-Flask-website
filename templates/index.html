@@ -1,0 +1,32 @@
+{%extends "layout.html" %}
+
+
+{% block content %}
+
+<nav>
+    <ul>
+        {% for menu in menus %}
+        <li><a href = "#{{menu.name}}">{{menu.name}}</a></li>
+        {% endfor %}
+        <li>LOGIN</li>
+    </ul>
+</nav>
+
+
+<div id="food-menu">
+    {% for food in foodMenu %}
+        <div class="day">
+            <div>{{food.day}}</div>
+            <div>{{food.item}}</div>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% for page in pages %}
+<div>{{page.content|safe}}</div>
+{% endfor %}
+
+
+
+{% endblock content%}
