@@ -89,11 +89,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table bluescafe.user: ~1 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`userId`, `username`, `passHash`, `cookieHash`) VALUES
-<<<<<<< HEAD
 	(1, 'admin', '$2b$12$HHhsTUQRKi6iItqm/.pple4w3dUps.zJnPiJ5iMJ5R9JjDA6uL4C6', '$2b$12$LBnus99UIKxs44ifpQYwveFRC3MubI0b7pU7vAo9Fm6s6ZcaUZbYG');
-=======
-	(1, 'admin', '$2b$12$HHhsTUQRKi6iItqm/.pple4w3dUps.zJnPiJ5iMJ5R9JjDA6uL4C6', '$2b$12$uoNfVFQiu4pImYiuse2MCOPx5Ezu7duEDVFi2FjbihXSB7aF3wSyW');
->>>>>>> main
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
