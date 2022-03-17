@@ -8,11 +8,15 @@ from random import randrange
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
+app.config.from_object("config.DBConfig")
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{app.config["DB_USERNAME"]}:{app.config["DB_PASSWORD"]}@{app.config["DB_HOST"]}/{app.config["DB_NAME"]}'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # replace the user name and password in the statement below
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/bluescafe'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/bluescafe'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/bluescafe'
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
@@ -101,6 +105,13 @@ def addMenuItem():
                 return render_template("addmenuitem.html")
     else:
         return redirect("/login")
+        
+@ app.route('/logout')
+def logout():
+    resp = make_response(redirect("/"))
+    resp.set_cookie('user', max_age=0)
+    resp.set_cookie('cookieHash', max_age=0)
+    return resp
 
 
 if __name__ == '__main__':
