@@ -1,3 +1,4 @@
+from types import NoneType
 from flask import Flask, render_template, redirect, request, make_response
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.automap import automap_base
@@ -35,15 +36,29 @@ def index():
 
 @ app.route('/login', methods=["GET", "POST"])
 def login():
-    if request.method == "POST":
+
+    # check cookie existantce,
+    if 'user' in request.cookies and 'cookieHash' in request.cookies:
+        loginUser = request.cookies.get('user')
+        user = db.session.query(User).filter_by(username=loginUser).first()
+        storedCookieHash = request.cookies.get('cookieHash')
+
+        if storedCookieHash == user.cookieHash:
+            return redirect("/addmenuitem")
+
+    elif request.method == "POST":
         username = request.form["username"].lower().strip()
         pwd = request.form["password"]
-
         user = db.session.query(User).filter_by(username=username).first()
 
-        if (bcrypt.check_password_hash(user.passHash, pwd)):
+        # check user existance
+        if type(user) is NoneType:
+            return render_template('error.html', message="the user does not exist", back=request.referrer)
+
+        elif (bcrypt.check_password_hash(user.passHash, pwd)):
+            # generate cookiehash when user login
             cookieHash = bcrypt.generate_password_hash(
-                str(randrange(999999999))).decode('utf-8')
+                str(randrange(9999999999))).decode('utf-8')
             user.cookieHash = cookieHash
             db.session.commit()
             db.session.close()
@@ -52,30 +67,37 @@ def login():
             resp.set_cookie('cookieHash', cookieHash,  max_age=60*60*24)
             return resp
         else:
-            return render_template('error.html', message="wrong password")
+            return render_template('error.html', message="wrong password", back=request.referrer)
     else:
         return render_template('login.html')
 
 
 @ app.route('/addmenuitem', methods=["GET", "POST"])
 def addMenuItem():
-    if request.cookies.get('user'):
-        if request.method == "POST":
-            items = request.form.getlist('item')
-            dates = request.form.getlist('date')
 
-            for i in range(len(items)):
-                if(items[i] != "" and dates[i] != ""):
-                    new_item = FoodMenu(item=items[i], day=dates[i])
-                    db.session.add(new_item)
-                else:
-                    return render_template('error.html', message="input error", back=request.referrer)
+    # check cookie existantce
+    if 'user' in request.cookies and 'cookieHash' in request.cookies:
+        loginUser = request.cookies.get('user')
+        user = db.session.query(User).filter_by(username=loginUser).first()
+        storedCookieHash = request.cookies.get('cookieHash')
 
-            db.session.commit()
-            db.session.close()
-            return redirect("/")
-        else:
-            return render_template("addmenuitem.html")
+        if storedCookieHash == user.cookieHash:
+            if request.method == "POST":
+                items = request.form.getlist('item')
+                dates = request.form.getlist('date')
+
+                for i in range(len(items)):
+                    if(items[i] != "" and dates[i] != ""):
+                        new_item = FoodMenu(item=items[i], day=dates[i])
+                        db.session.add(new_item)
+                    else:
+                        return render_template('error.html', message="input error", back=request.referrer)
+
+                db.session.commit()
+                db.session.close()
+                return redirect("/")
+            else:
+                return render_template("addmenuitem.html")
     else:
         return redirect("/login")
 
