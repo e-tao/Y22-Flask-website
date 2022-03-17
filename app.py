@@ -8,10 +8,9 @@ from random import randrange
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
+app.config.from_object("config.DBConfig")
 
-# replace the user name and password in the statement below
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://username:password@localhost/bluescafe'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ethan:w8Q1Ji8I23s2r4YIsocemabAb5nEQo@192.168.1.15/bluescafe'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{app.config["DB_USERNAME"]}:{app.config["DB_PASSWORD"]}@{app.config["DB_HOST"]}/{app.config["DB_NAME"]}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
