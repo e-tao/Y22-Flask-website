@@ -25,9 +25,9 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `item` varchar(64) NOT NULL,
   `day` date NOT NULL,
   PRIMARY KEY (`menuId`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table bluescafe.menu: ~14 rows (approximately)
+-- Dumping data for table bluescafe.menu: ~16 rows (approximately)
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
 INSERT INTO `menu` (`menuId`, `item`, `day`) VALUES
 	(1, 'Quiche au légumes', '2022-03-14'),
@@ -39,7 +39,13 @@ INSERT INTO `menu` (`menuId`, `item`, `day`) VALUES
 	(42, 'aaa', '2022-03-23'),
 	(43, 'aaaa', '2022-03-24'),
 	(44, 'aaaaa', '2022-03-25'),
-	(45, 'aaaaaa', '2022-03-26');
+	(45, 'aaaaaa', '2022-03-26'),
+	(46, 'x', '2022-03-21'),
+	(47, 'xx', '2022-03-22'),
+	(48, 'xxx', '2022-03-30'),
+	(49, 'xxxx', '2022-03-24'),
+	(50, 'xxxxx', '2022-03-25'),
+	(51, 'zzzzzzz', '2022-03-26');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
 -- Dumping structure for table bluescafe.page
@@ -68,13 +74,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `userId` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `passHash` varchar(64) NOT NULL,
-  PRIMARY KEY (`userId`)
+  `cookieHash` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`userId`),
+  UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table bluescafe.user: ~0 rows (approximately)
+-- Dumping data for table bluescafe.user: ~1 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`userId`, `username`, `passHash`) VALUES
-	(1, 'admin', '$2b$12$HHhsTUQRKi6iItqm/.pple4w3dUps.zJnPiJ5iMJ5R9JjDA6uL4C6');
+INSERT INTO `user` (`userId`, `username`, `passHash`, `cookieHash`) VALUES
+	(1, 'admin', '$2b$12$HHhsTUQRKi6iItqm/.pple4w3dUps.zJnPiJ5iMJ5R9JjDA6uL4C6', '$2b$12$uoNfVFQiu4pImYiuse2MCOPx5Ezu7duEDVFi2FjbihXSB7aF3wSyW');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
