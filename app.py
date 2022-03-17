@@ -10,12 +10,8 @@ app = Flask(__name__)
 bcrypt = Bcrypt(app)
 
 # replace the user name and password in the statement below
-<<<<<<< HEAD
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/bluescafe'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/bluescafe'
-=======
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://username:password@localhost/bluescafe'
->>>>>>> main
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
