@@ -11,6 +11,7 @@ bcrypt = Bcrypt(app)
 
 # replace the user name and password in the statement below
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://username:password@localhost/bluescafe'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ethan:w8Q1Ji8I23s2r4YIsocemabAb5nEQo@192.168.1.15/bluescafe'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -99,6 +100,14 @@ def addMenuItem():
                 return render_template("addmenuitem.html")
     else:
         return redirect("/login")
+
+
+@ app.route('/logout')
+def logout():
+    resp = make_response(redirect("/"))
+    resp.set_cookie('user', max_age=0)
+    resp.set_cookie('cookieHash', max_age=0)
+    return resp
 
 
 if __name__ == '__main__':
