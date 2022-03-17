@@ -74,36 +74,22 @@ def login():
 
 @ app.route('/addmenuitem', methods=["GET", "POST"])
 def addMenuItem():
-<<<<<<< HEAD
-    if request.cookies.get('user'):
-        if request.method == "POST":
-            items = request.form.getlist('item')
-            entrees = request.form.getlist('entree')
-            dates = request.form.getlist('date')
-
-            for i in range(len(items)):
-                if(items[i] != ""  and entrees[i] !="" and dates[i] != ""):
-                   new_item = FoodMenu(item=items[i], entree=entrees[i], day=dates[i])
-                   db.session.add(new_item)
-                else:
-                    return render_template('error.html', message="input error", back=request.referrer)
-=======
 
     # check cookie existantce
     if 'user' in request.cookies and 'cookieHash' in request.cookies:
         loginUser = request.cookies.get('user')
         user = db.session.query(User).filter_by(username=loginUser).first()
         storedCookieHash = request.cookies.get('cookieHash')
->>>>>>> main
 
         if storedCookieHash == user.cookieHash:
             if request.method == "POST":
                 items = request.form.getlist('item')
+                entrees = request.form.getlist('entree')
                 dates = request.form.getlist('date')
 
                 for i in range(len(items)):
-                    if(items[i] != "" and dates[i] != ""):
-                        new_item = FoodMenu(item=items[i], day=dates[i])
+                    if(items[i] != ""  and entrees[i] !="" and dates[i] != ""):
+                        new_item = FoodMenu(item=items[i], entree=entrees[i], day=dates[i])
                         db.session.add(new_item)
                     else:
                         return render_template('error.html', message="input error", back=request.referrer)
