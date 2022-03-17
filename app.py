@@ -8,7 +8,7 @@ bcrypt = Bcrypt(app)
 
 # replace the user name and password in the statement below
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/bluescafe'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://ethan:w8Q1Ji8I23s2r4YIsocemabAb5nEQo@192.168.1.15/bluescafe'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/bluescafe'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -60,12 +60,13 @@ def addMenuItem():
     if request.cookies.get('user'):
         if request.method == "POST":
             items = request.form.getlist('item')
+            entrees = request.form.getlist('entree')
             dates = request.form.getlist('date')
 
             for i in range(len(items)):
-                if(items[i] != "" and dates[i] != ""):
-                    new_item = FoodMenu(item=items[i], day=dates[i])
-                    db.session.add(new_item)
+                if(items[i] != ""  and entrees[i] !="" and dates[i] != ""):
+                   new_item = FoodMenu(item=items[i], entree=entrees[i], day=dates[i])
+                   db.session.add(new_item)
                 else:
                     return render_template('error.html', message="input error", back=request.referrer)
 
