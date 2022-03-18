@@ -1,7 +1,7 @@
 -- --------------------------------------------------------
--- Host:                         192.168.1.15
--- Server version:               10.6.4-MariaDB-1:10.6.4+maria~focal - mariadb.org binary distribution
--- Server OS:                    debian-linux-gnu
+-- Host:                         127.0.0.1
+-- Server version:               10.4.22-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win64
 -- HeidiSQL Version:             11.3.0.6295
 -- --------------------------------------------------------
 
@@ -23,29 +23,36 @@ DROP TABLE IF EXISTS `menu`;
 CREATE TABLE IF NOT EXISTS `menu` (
   `menuId` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `item` varchar(64) NOT NULL,
+  `entree` varchar(64) NOT NULL,
   `day` date NOT NULL,
   PRIMARY KEY (`menuId`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table bluescafe.menu: ~16 rows (approximately)
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` (`menuId`, `item`, `day`) VALUES
-	(1, 'Quiche au légumes', '2022-03-14'),
-	(2, 'Brochettes de crevettes et garniture', '2022-03-15'),
-	(3, 'Tacos de boeuf', '2022-03-16'),
-	(4, 'Risotto d\'orge et pétoncles', '2022-03-17'),
-	(40, 'a', '2022-03-21'),
-	(41, 'aa', '2022-03-22'),
-	(42, 'aaa', '2022-03-23'),
-	(43, 'aaaa', '2022-03-24'),
-	(44, 'aaaaa', '2022-03-25'),
-	(45, 'aaaaaa', '2022-03-26'),
-	(46, 'x', '2022-03-21'),
-	(47, 'xx', '2022-03-22'),
-	(48, 'xxx', '2022-03-30'),
-	(49, 'xxxx', '2022-03-24'),
-	(50, 'xxxxx', '2022-03-25'),
-	(51, 'zzzzzzz', '2022-03-26');
+INSERT INTO `menu` (`menuId`, `item`, `entree`, `day`) VALUES
+	(1, 'Quiche au légumes', '', '2022-03-14'),
+	(2, 'Brochettes de crevettes et garniture', '', '2022-03-15'),
+	(3, 'Tacos de boeuf', '', '2022-03-16'),
+	(4, 'Risotto d\'orge et pétoncles', '', '2022-03-17'),
+	(40, 'a', '', '2022-03-21'),
+	(41, 'aa', '', '2022-03-22'),
+	(42, 'aaa', '', '2022-03-23'),
+	(43, 'aaaa', '', '2022-03-24'),
+	(44, 'aaaaa', '', '2022-03-25'),
+	(45, 'aaaaaa', '', '2022-03-26'),
+	(46, 'x', '', '2022-03-21'),
+	(47, 'xx', '', '2022-03-22'),
+	(48, 'xxx', '', '2022-03-30'),
+	(49, 'xxxx', '', '2022-03-24'),
+	(50, 'xxxxx', '', '2022-03-25'),
+	(51, 'zzzzzzz', '', '2022-03-26'),
+	(52, 'h', 'k', '2022-03-17'),
+	(53, 'hh', 'kk', '2022-03-18'),
+	(54, 'hhh', 'kkk', '2022-03-19'),
+	(55, 'hhhh', 'kkkk', '2022-03-20'),
+	(56, 'hhhhh', 'kkkk', '2022-03-21'),
+	(57, 'hhhhhh', 'kkkkk', '2022-03-22');
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
 -- Dumping structure for table bluescafe.page
@@ -82,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table bluescafe.user: ~1 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`userId`, `username`, `passHash`, `cookieHash`) VALUES
-	(1, 'admin', '$2b$12$HHhsTUQRKi6iItqm/.pple4w3dUps.zJnPiJ5iMJ5R9JjDA6uL4C6', '$2b$12$uoNfVFQiu4pImYiuse2MCOPx5Ezu7duEDVFi2FjbihXSB7aF3wSyW');
+	(1, 'admin', '$2b$12$HHhsTUQRKi6iItqm/.pple4w3dUps.zJnPiJ5iMJ5R9JjDA6uL4C6', '$2b$12$LBnus99UIKxs44ifpQYwveFRC3MubI0b7pU7vAo9Fm6s6ZcaUZbYG');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
