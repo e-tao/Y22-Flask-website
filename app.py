@@ -13,10 +13,6 @@ app.config.from_object("config.DBConfig")
 app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{app.config["DB_USERNAME"]}:{app.config["DB_PASSWORD"]}@{app.config["DB_HOST"]}/{app.config["DB_NAME"]}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# replace the user name and password in the statement below
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/bluescafe'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:''@localhost/bluescafe'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
