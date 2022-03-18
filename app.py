@@ -110,13 +110,5 @@ def logout():
     return resp
 
 
-@ app.route('/logout')
-def logout():
-    resp = make_response(redirect("/"))
-    resp.set_cookie('user', max_age=0)
-    resp.set_cookie('cookieHash', max_age=0)
-    return resp
-
-
 if __name__ == '__main__':
     app.run(debug=True)
