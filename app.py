@@ -28,7 +28,7 @@ User = Base.classes.user
 def index():
     foodMenu = db.session.query(FoodMenu).order_by(
         FoodMenu.day.desc()).limit(6)
-    foodMenu = foodMenu[::-1]
+    foodMenu = foodMenu[::-2]
     pages = db.session.query(Page).order_by(Page.order.asc()).all()
     db.session.close()
     return render_template('index.html', pages=pages, foodMenu=foodMenu)
