@@ -4,19 +4,21 @@
 <nav>
     <ul>
         {% for page in pages %}
-        <li><a href = "#{{page.name}}">{{page.name}}</a></li>
+        <li><a href="#{{page.name}}">{{page.name}}</a></li>
         {% endfor %}
-        <li><a href = "/login">LOGIN</a></li>
+        <li><a href="/login">LOGIN</a></li>
     </ul>
 </nav>
 
 
 <div id="food-menu">
     {% for food in foodMenu %}
-        <div class="day">
-            <div>{{food.day}}</div>
-            <div>{{food.item}}</div>
-        </div>
+    <div class="day">
+        <div>{{food.day}}</div>
+        <div>{{food.item}}</div>
+        <div>{{food.entree}}</div>
+
+    </div>
     {% endfor %}
 </div>
 
