@@ -44,7 +44,6 @@ We will ONLY merge the working code to main.
 
 you can create your dev-branch after pull the main by using
 
-<ul>
-  <li>`git switch -c yourname-dev-branch`</li>
-  <li>`git checkout -b yourname-dev-branch`</li>
-</ul>
+  `git switch -c yourname-dev-branch`
+  `git checkout -b yourname-dev-branch`
+
