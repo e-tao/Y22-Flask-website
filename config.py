@@ -1,9 +1,8 @@
 class DBConfig(object):
-
     DB_NAME = 'bluescafe'
 
-    DB_USERNAME = 'root'
+    DB_USERNAME = 'ethan'
 
-    DB_PASSWORD = '1'
+    DB_PASSWORD = 'w8Q1Ji8I23s2r4YIsocemabAb5nEQo'
 
-    DB_HOST = 'localhost'
+    DB_HOST = '192.168.1.15'
