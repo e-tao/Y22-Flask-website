@@ -1,5 +1,4 @@
 class DBConfig(object):
-
     DB_NAME = 'bluescafe'
 
     DB_USERNAME = 'root'
